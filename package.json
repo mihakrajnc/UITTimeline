@@ -1,0 +1,31 @@
+{
+   "name":"dev.krajnc.uitoolkittimeline",
+   "version":"0.1.0",
+   "displayName":"UI Toolkit Timeline",
+   "description":"Adds support for animating UI Toolkit elements with Timeline.\nContains clips for animating transform properties (position, rotation, scale), visibility / display, and adding / removing classes.",
+   "unity":"2021.3",
+   "unityRelease":"16f1",
+   "documentationUrl":"https://github.com/mihakrajnc/UITTimeline/blob/main/README.md",
+   "changelogUrl":"https://github.com/mihakrajnc/UITTimeline/blob/main/CHANGELOG.md",
+   "licensesUrl":"https://github.com/mihakrajnc/UITTimeline/blob/main/LICENSE.md",
+   "dependencies":{
+      "com.unity.timeline":"1.6.5"
+   },
+   "keywords":[
+      "Timeline",
+      "UI Toolkit",
+      "Animation"
+   ],
+   "samples":[
+      {
+         "displayName":"UI Toolkit Timeline Example",
+         "description":"Contains an example scene / uxml / timeline.",
+         "path":"Samples~/UITTSample"
+      }
+   ],
+   "author":{
+      "name":"Miha Krajnc",
+      "email":"miha@krajnc.dev",
+      "url":"https://krajnc.dev"
+   }
+}

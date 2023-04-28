@@ -1,0 +1,31 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="UITTSampleStyle.uss?fileID=7433441132597879392&amp;guid=97dfca12adda3443f98d7e4511caf9fe&amp;type=3#UITTSampleStyle" />
+    <ui:VisualElement name="root" class="root">
+        <ui:VisualElement name="TimelineSimple" class="animation-category">
+            <ui:Label text="Timeline (Clips)" name="Title" class="animation-catagory__title" />
+            <ui:Button text="Scale" display-tooltip-when-elided="true" name="ButtonScale" class="animation-button" />
+            <ui:Button text="Rotate" display-tooltip-when-elided="true" name="ButtonRotate" class="animation-button" />
+            <ui:Button text="Move" name="ButtonMove" class="animation-button" />
+            <ui:Button text="Opacity" name="ButtonOpacity" class="animation-button" />
+            <ui:Button text="Visibility/Display" name="ButtonVisibilityDisplay" class="animation-button" />
+        </ui:VisualElement>
+        <ui:VisualElement name="TimelineAdvanced" class="animation-category">
+            <ui:Label text="Timeline (Advanced)" name="Title" class="animation-catagory__title" />
+            <ui:Button text="Curves" name="ButtonCurves" class="animation-button" />
+            <ui:Button text="Layers" name="ButtonLayers" class="animation-button" />
+            <ui:Button text="Sub Item" name="ButtonSubItem" class="animation-button">
+                <ui:VisualElement name="Dot" style="border-top-left-radius: 50%; border-bottom-left-radius: 50%; border-top-right-radius: 50%; border-bottom-right-radius: 50%; position: absolute; width: 30px; height: 30px; background-color: rgb(255, 164, 0); left: 20px; top: 20px;" />
+                <ui:VisualElement name="Square" class="square" style="position: absolute; width: 30px; height: 30px; background-color: rgb(255, 164, 0); left: 20px; top: 20px;" />
+                <ui:VisualElement name="Line" class="line animated" style="position: absolute; width: 30px; height: 5px; background-color: rgb(255, 164, 0); left: 20px; top: 20px;" />
+            </ui:Button>
+            <ui:Button text="Class" name="ButtonClass" class="animation-button" />
+        </ui:VisualElement>
+        <ui:VisualElement name="TimelineByClass" class="animation-category">
+            <ui:Label text="Timeline (By Class)" name="Title" class="animation-catagory__title" />
+            <ui:Button text=".scaling-button" name="ScalingButton" class="animation-button scaling-button" />
+            <ui:Button text=".scaling-button" name="ScalingButton" class="animation-button scaling-button" />
+            <ui:Button text=".scaling-button" name="ScalingButton" class="animation-button scaling-button" />
+            <ui:Button text=".scaling-button" name="ScalingButton" class="animation-button scaling-button" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
