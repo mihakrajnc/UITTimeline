@@ -18,11 +18,35 @@ namespace UITTimeline
     [TrackColor(0.259f, 0.529f, 0.961f)]
     public class UITVisualElementTrack : TrackAsset, ILayerable
     {
+        [SerializeField,
+         Tooltip("If enabled, the track will add appropriate UsageHints to it's element(s), " +
+                 "based on the added clips, to optimize performance. Disable this only if you're adding them " +
+                 "yourself or want more control over how they are used.")]
+        private bool automaticUsageHints = true;
+
         public override Playable CreateTrackMixer(PlayableGraph graph, GameObject go, int inputCount)
         {
             var mixer = ScriptPlayable<UITMixerBehaviour>.Create(graph, inputCount);
-            mixer.GetBehaviour().Elements =
-                QueryElements(name, go.GetComponentInParent<UIDocument>().rootVisualElement);
+
+            var uid = go.GetComponentInParent<UIDocument>();
+            if (uid == null)
+            {
+                Debug.LogError("Could not find UIDocument in parent hierarchy.");
+                return Playable.Null;
+            }
+
+            var root = uid.rootVisualElement;
+            if (root == null)
+            {
+                Debug.LogError("rootVisualElement is null. Check that you don't have PlayOnAwake enabled " +
+                               "in your PlayableDirector (Use the DelayedPlayOnAwake MonoBehaviour instead).");
+                return Playable.Null;
+            }
+
+            var behaviour = mixer.GetBehaviour();
+            behaviour.Elements = QueryElements(name, go.GetComponentInParent<UIDocument>().rootVisualElement);
+            behaviour.AutomaticUsageHints = automaticUsageHints;
+
             return mixer;
         }
 

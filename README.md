@@ -1,4 +1,4 @@
-# UI Toolkit Timeline
+<img width="200" alt="UI Toolkit Timeline Logo" src="https://user-images.githubusercontent.com/8857844/235506200-c5d6098b-9caa-45e4-bbcf-829292b1a9b8.png">
 
 UI Toolkit Timeline is an open-source repository / UPM Package containing extensions for Unity Timeline that enable animating VisualElements. It contains a timeline track and clips that allow users to select and animate UI Toolkit VisualElements - all transform values are supported, in addition to some commonly used styles, like Opacity, Visibility, and Display. It also allows adding / removing classes directly from Timeline. The selector syntax is similar to the way selectors work in Unity Style Sheets (USS).
 
@@ -76,6 +76,16 @@ All normal Timeline operations can be done on the clips, including blending, ext
 Right click on your track and add the clip you want. Clips that animate number types (e.g. position / opacity...) can be blended, and you can set up custom curves for them.
 
 <img width="802" alt="Clip Examples" src="https://user-images.githubusercontent.com/8857844/235455165-3cd9471f-6b14-4e46-86f9-98ee22e2049e.png">
+
+## Performance
+
+The performance of your timeline will greatly depend on what you are animating and how.
+
+UITT tries to optimize the rendering performance by automatically enabling [UsageHints](https://docs.unity3d.com/ScriptReference/UIElements.UsageHints.html) on your VisualElements, based on the clips that you are using in your track (e.g. having a Position clip will automatically add the DynamicTransform usage hint to your element).
+
+In general animating the transform of a VisualElement is quite efficient, while animating / changing values that trigger a layout recalculation can severely impact the FPS of your game. Be mindful of this when setting up your timeline.
+
+_If you want more control of how UsageHints are set up you can disable automatic UsageHints in the track inspector._
 
 # Samples
 

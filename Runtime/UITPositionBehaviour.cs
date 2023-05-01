@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace UITTimeline
 {
@@ -11,6 +12,8 @@ namespace UITTimeline
     [Serializable]
     public class UITPositionBehaviour : UITBehaviour
     {
+        public override UsageHints Hints => UsageHints.DynamicTransform;
+
         public Vector2 Position;
     }
 }

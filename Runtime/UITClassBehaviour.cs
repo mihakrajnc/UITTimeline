@@ -20,7 +20,7 @@ namespace UITTimeline
 
         public override void OnBehaviourPlay(Playable playable, FrameData info)
         {
-            if (Elements == null) return;
+            if (Elements == null || string.IsNullOrEmpty(ClassName)) return;
             foreach (var e in Elements)
             {
                 e.AddToClassList(ClassName);
@@ -29,7 +29,7 @@ namespace UITTimeline
 
         public override void OnBehaviourPause(Playable playable, FrameData info)
         {
-            if (Elements == null) return;
+            if (Elements == null || string.IsNullOrEmpty(ClassName)) return;
             foreach (var e in Elements)
             {
                 e.RemoveFromClassList(ClassName);

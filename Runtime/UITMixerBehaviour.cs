@@ -12,20 +12,24 @@ namespace UITTimeline
     [Serializable]
     public class UITMixerBehaviour : PlayableBehaviour
     {
-        public List<VisualElement> Elements;
+        public List<VisualElement> Elements { get; internal set; }
+        public bool AutomaticUsageHints { get; internal set; }
 
         public override void OnGraphStart(Playable playable)
         {
+            var suggestedHints = UsageHints.None;
+
             // Initialize clips
             for (int i = 0; i < playable.GetInputCount(); i++)
             {
                 var playableInput = (ScriptPlayable<UITBehaviour>) playable.GetInput(i);
                 var behaviour = playableInput.GetBehaviour();
 
+                suggestedHints |= behaviour.Hints;
+
                 switch (behaviour)
                 {
                     case UITClassBehaviour cls:
-                        // Class behaviour handles it's own logic - doesn't use a mixer
                         cls.Elements = Elements;
                         break;
                     case UITDisplayBehaviour dsp:
@@ -34,6 +38,14 @@ namespace UITTimeline
                     case UITVisibilityBehaviour vis:
                         vis.Elements = Elements;
                         break;
+                }
+            }
+
+            if (AutomaticUsageHints)
+            {
+                foreach (var e in Elements)
+                {
+                    e.usageHints = suggestedHints;
                 }
             }
         }

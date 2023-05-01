@@ -1,4 +1,5 @@
 using System;
+using UnityEngine.UIElements;
 
 namespace UITTimeline
 {
@@ -10,6 +11,8 @@ namespace UITTimeline
     [Serializable]
     public class UITRotationBehaviour : UITBehaviour
     {
+        public override UsageHints Hints => UsageHints.DynamicTransform;
+
         public float Rotation;
     }
 }
