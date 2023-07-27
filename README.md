@@ -70,6 +70,8 @@ All normal Timeline operations can be done on the clips, including blending, ext
 - Display (`UITDisplayClip`): Toggles the display of the selected VisualElement on or off.
 - Visibility (`UITVisibilityClip`): Toggles the visibility of the selected VisualElement on or off.
 - Class Toggle (`UITClassToggle`): Enables or disables a class on the selected VisualElement.
+- Opacity (`UITOpacityClip`): Animates the opacity of the selected VisualElement.
+- Background Tint (`UITBackgroundTintClip`): Animates the background tint of the selected VisualElement.
 
 ### Usage
 

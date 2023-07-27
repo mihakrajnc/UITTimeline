@@ -56,6 +56,7 @@ namespace UITTimeline
             var rotation = 0f;
             var scale = new Vector2(1f, 1f);
             var opacity = 1f;
+            var backgroundTint = Color.white;
 
             for (int i = 0; i < playable.GetInputCount(); i++)
             {
@@ -68,13 +69,18 @@ namespace UITTimeline
                         position += trs.Position * playable.GetInputWeight(i);
                         break;
                     case UITScaleBehaviour scl:
+                        // TODO: Switch to Lerp?
                         scale += scl.Scale * playable.GetInputWeight(i);
                         break;
                     case UITRotationBehaviour rot:
                         rotation += rot.Rotation * playable.GetInputWeight(i);
                         break;
                     case UITOpacityBehaviour op:
+                        // TODO: Switch to Lerp?
                         opacity += op.Opacity * playable.GetInputWeight(i);
+                        break;
+                    case UITBackgroundTintBehaviour tint:
+                        backgroundTint = Color.Lerp(backgroundTint, tint.Color, playable.GetInputWeight(i));
                         break;
                 }
             }
@@ -85,6 +91,7 @@ namespace UITTimeline
                 e.transform.scale = scale;
                 e.transform.rotation = Quaternion.Euler(0, 0, rotation);
                 e.style.opacity = opacity;
+                e.style.unityBackgroundImageTintColor = backgroundTint;
             }
         }
     }

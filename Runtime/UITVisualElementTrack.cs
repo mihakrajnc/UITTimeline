@@ -14,7 +14,7 @@ namespace UITTimeline
     [TrackClipType(typeof(UITScaleClip)), TrackClipType(typeof(UITPositionClip)),
      TrackClipType(typeof(UITRotationClip)), TrackClipType(typeof(UITClassClip)),
      TrackClipType(typeof(UITOpacityClip)), TrackClipType(typeof(UITVisibilityClip)),
-     TrackClipType(typeof(UITDisplayClip))]
+     TrackClipType(typeof(UITDisplayClip)), TrackClipType(typeof(UITBackgroundTintClip))]
     [TrackColor(0.259f, 0.529f, 0.961f)]
     public class UITVisualElementTrack : TrackAsset, ILayerable
     {
