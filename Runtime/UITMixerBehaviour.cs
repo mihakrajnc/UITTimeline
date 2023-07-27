@@ -15,6 +15,8 @@ namespace UITTimeline
         public List<VisualElement> Elements { get; internal set; }
         public bool AutomaticUsageHints { get; internal set; }
 
+        private HashSet<Type> usedBehaviours = new();
+
         public override void OnGraphStart(Playable playable)
         {
             var suggestedHints = UsageHints.None;
@@ -39,6 +41,8 @@ namespace UITTimeline
                         vis.Elements = Elements;
                         break;
                 }
+
+                usedBehaviours.Add(behaviour.GetType());
             }
 
             if (AutomaticUsageHints)
@@ -87,12 +91,17 @@ namespace UITTimeline
 
             foreach (var e in Elements)
             {
-                e.transform.position = position;
-                e.transform.scale = scale;
-                e.transform.rotation = Quaternion.Euler(0, 0, rotation);
-                e.style.opacity = opacity;
-                e.style.unityBackgroundImageTintColor = backgroundTint;
+                if (UsesBehaviour<UITPositionBehaviour>()) e.transform.position = position;
+                if (UsesBehaviour<UITScaleBehaviour>()) e.transform.scale = scale;
+                if (UsesBehaviour<UITPositionBehaviour>()) e.transform.rotation = Quaternion.Euler(0, 0, rotation);
+                if (UsesBehaviour<UITOpacityBehaviour>()) e.style.opacity = opacity;
+                if (UsesBehaviour<UITBackgroundTintBehaviour>()) e.style.unityBackgroundImageTintColor = backgroundTint;
             }
+        }
+
+        private bool UsesBehaviour<T>() where T : UITBehaviour
+        {
+            return usedBehaviours.Contains(typeof(T));
         }
     }
 }
