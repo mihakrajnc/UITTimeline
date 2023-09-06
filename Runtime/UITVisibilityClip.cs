@@ -15,7 +15,7 @@ namespace UITTimeline
     {
         public UITVisibilityBehaviour _template = new();
 
-        public ClipCaps clipCaps => ClipCaps.None;
+        public ClipCaps clipCaps => ClipCaps.Extrapolation;
 
         public override Playable CreatePlayable(PlayableGraph graph, GameObject owner)
         {
